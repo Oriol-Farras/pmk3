@@ -21,15 +21,15 @@ class Menu:
 
     # Change the value of the last non used space of the dict
     def set_last_non_used_value(self, value):
-        self.__menu_dicc[self.lenght() + 1] = value
+        self.__menu_dicc[self.length() + 1] = value
 
     # Returns the length of the list
-    def lenght(self):
+    def length(self):
         return len(self.list)
 
     # Iterate to the next element in the menu
     def next(self):
-        if self.__actual_position < self.lenght():
+        if self.__actual_position < self.length():
             self.__actual_position += 1
 
     # Iterate to the previous element in the menu
