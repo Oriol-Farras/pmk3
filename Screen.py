@@ -18,20 +18,32 @@ class Screen:
         self.THIRD_ICON_POSITION = (4,46)
 
         # Bar position
-        self.BAR_POSITION = (0,22)
+        self.SIDEBAR_POSITION = (0,22)
 
         # Text positions
         self.TEXT_1_POSITION = (30,2)
         self.TEXT_2_POSITION = (30,24)
         self.TEXT_3_POSITION = (30,45)
 
+        # Connection with the oled screen
         self.i2c = board.I2C()
         self.oled = adafruit_ssd1306.SSD1306_I2C(self.WIDTH, self.HEIGHT, self.i2c, addr=0x3C)
 
+        # Clean screen
         self.oled.fill(0)
         self.oled.show()
 
         self.__load_assets()
+
+        # Create a new black image the size of the scree
+        background = Image.new("1", (self.WIDTH, self.HEIGHT), 0)  
+        draw = ImageDraw.Draw(background)
+        
+        # Put the icons in their position
+        background.paste(self.icon_auto_copy, self.FIRST_ICON_POSITION) 
+        background.paste(self.sidebar, self.SIDEBAR_POSITION)
+        background.paste(self.icon_read_tag, self.SECOND_ICON_POSITION)
+        background.paste(self.icon_scan_tag, self.THIRD_ICON_POSITION)
         
     # Load the diferent assets for the project
     def __load_assets(self):
@@ -45,13 +57,13 @@ class Screen:
         self.icon_script_tag = Image.open("pbm_assets/icon-script.pbm").convert("1")
         self.icon_waves_tag = Image.open("pbm_assets/icon-waves.pbm").convert("1")
 
-        self.barra_lateral = Image.open("pbm_assets/item-selected-backgraund.pbm").convert("1")
+        self.sidebar = Image.open("pbm_assets/item-selected-backgraund.pbm").convert("1")
 
-        self.font_normal = ImageFont.truetype("fuentes/pixelOperator.ttf", 16)
-        self.font_negreta = ImageFont.truetype("fuentes/pixelOperator-Bold.ttf",16)
+        self.normal_font = ImageFont.truetype("fuentes/pixelOperator.ttf", 16)
+        self.bold_font = ImageFont.truetype("fuentes/pixelOperator-Bold.ttf",16)
 
     def lenght(self):
-        pass
+        return self.menu.lenght()
 
     def next(self):
         pass
