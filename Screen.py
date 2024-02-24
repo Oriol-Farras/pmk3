@@ -87,13 +87,17 @@ class Screen:
         self.icon_info_tag = Image.open("pbm_assets/icon-info.pbm").convert("1")
         self.icons_list.append(self.icon_info_tag)
 
+        # Menu with icons
         self.icons_menu = Menu(self.icons_list)
 
+        # Sidebar bitmap
         self.sidebar = Image.open("pbm_assets/item-selected-backgraund.pbm").convert("1")
 
+        # Fonts
         self.normal_font = ImageFont.truetype("fonts/PixelOperator.ttf", 16)
         self.bold_font = ImageFont.truetype("fonts/PixelOperator-Bold.ttf",16)
 
+    # Draw the content in the screen
     def __draw_screen(self,background, draw, triplet_name_list, triplet_icon_list):
         background.paste(triplet_icon_list[0], self.FIRST_ICON_POSITION) 
         background.paste(self.sidebar, self.SIDEBAR_POSITION)
@@ -109,20 +113,24 @@ class Screen:
         text = triplet_name_list[2]
         draw.text(self.TEXT_3_POSITION, text, font=self.normal_font, fill=1)
 
-
+    # Draw a black rectangle to clean the screen
     def __clean_screen(self):
         self.background = Image.new("1", (self.WIDTH, self.HEIGHT), 0)  
         self.draw = ImageDraw.Draw(self.background)
 
+    # What happes when the ok button is pressed
     def __ok_button_pressed(self):
         pass
-
+    
+    # What happes when the down button is pressed
     def __down_button_pressed(self):
         self.next()
 
+    # What happes when the up button is pressed
     def __up_button_pressed(self):
         self.previous()
 
+    # Defining all the buttons and its funcionalitis
     def __buttons(self):
         self.up_button = Button(17)
         self.ok_button = Button(19)
@@ -132,19 +140,19 @@ class Screen:
         self.ok_button.when_pressed = self.__ok_button_pressed
         self.down_button.when_pressed = self.__down_button_pressed
 
-    def lenght(self):
-        return self.menu.lenght()
-    
+    # Update the content of the screen
     def __update_screen(self):
         self.__clean_screen()
         self.__draw_screen(self.background, self.draw, self.names_menu.get_triplet_value(), self.icons_menu.get_triplet_value())
 
+    # Go to the next elements of the screen and update them
     def next(self):
         self.icons_menu.next()
         self.names_menu.next()
 
         self.__update_screen()
 
+    # Go to the previous elements of the screen and update them
     def previous(self):
         self.icons_menu.previous()
         self.names_menu.previous()
