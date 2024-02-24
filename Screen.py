@@ -53,7 +53,7 @@ class Screen:
         draw.text(self.TEXT_2_POSITION,text, font=self.bold_font, fill=1)
 
         text = "Read Tag"
-        draw.text(self.THIRD_ICON_POSITION, text, font=self.normal_font, fill=1)
+        draw.text(self.TEXT_3_POSITION, text, font=self.normal_font, fill=1)
 
         while True:
             self.oled.image(background)
