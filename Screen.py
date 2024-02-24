@@ -38,12 +38,12 @@ class Screen:
         self.icon_auto_copy = Image.open("pbm_assets/icon-auto-copy.pbm").convert("1")
         self.icon_read_tag = Image.open("pbm_assets/icon-read-tag.pbm").convert("1")
         self.icon_scan_tag = Image.open("pbm_assets/icon-scan-tag.pbm").convert("1")
-        self.icon_gear_tag = Image.open("pbm_assets/icon-scan-tag.pbm").convert("1")
-        self.icon_scan_tag = Image.open("pbm_assets/icon-scan-tag.pbm").convert("1")
-        self.icon_scan_tag = Image.open("pbm_assets/icon-scan-tag.pbm").convert("1")
-        self.icon_scan_tag = Image.open("pbm_assets/icon-scan-tag.pbm").convert("1")
-        self.icon_scan_tag = Image.open("pbm_assets/icon-scan-tag.pbm").convert("1")
-        self.icon_scan_tag = Image.open("pbm_assets/icon-scan-tag.pbm").convert("1")
+        self.icon_gear_tag = Image.open("pbm_assets/icon-gear.pbm").convert("1")
+        self.icon_glasses_tag = Image.open("pbm_assets/icon-glasses.pbm").convert("1")
+        self.icon_info_tag = Image.open("pbm_assets/icon-info.pbm").convert("1")
+        self.icon_pencil_tag = Image.open("pbm_assets/icon-pencil.pbm").convert("1")
+        self.icon_script_tag = Image.open("pbm_assets/icon-script.pbm").convert("1")
+        self.icon_waves_tag = Image.open("pbm_assets/icon-waves.pbm").convert("1")
 
         self.barra_lateral = Image.open("pbm_assets/item-selected-backgraund.pbm").convert("1")
 
