@@ -39,13 +39,14 @@ class Screen:
         # Create a new black image the size of the scree
         background = Image.new("1", (self.WIDTH, self.HEIGHT), 0)  
         draw = ImageDraw.Draw(background)
-        
+        """
         # Put the icons in their position
         background.paste(self.icon_auto_copy, self.FIRST_ICON_POSITION) 
         background.paste(self.sidebar, self.SIDEBAR_POSITION)
         background.paste(self.icon_read_tag, self.SECOND_ICON_POSITION)
         background.paste(self.icon_scan_tag, self.THIRD_ICON_POSITION)
-
+        """
+        """
         text = "Auto Copy"
         draw.text(self.TEXT_1_POSITION, text, font=self.normal_font, fill=1)
 
@@ -54,6 +55,8 @@ class Screen:
 
         text = "Read Tag"
         draw.text(self.TEXT_3_POSITION, text, font=self.normal_font, fill=1)
+        """
+        self.__draw_screen(background, draw, self.names_menu.get_triplet_value(), self.icons_menu.get_triplet_value())
 
         while True:
             self.oled.image(background)
@@ -106,11 +109,20 @@ class Screen:
         self.normal_font = ImageFont.truetype("fonts/PixelOperator.ttf", 16)
         self.bold_font = ImageFont.truetype("fonts/PixelOperator-Bold.ttf",16)
 
-    def __draw_screen(self,background, triplet_list):
-        background.paste(self.icon_auto_copy, self.FIRST_ICON_POSITION) 
+    def __draw_screen(self,background, draw, triplet_name_list, triplet_icon_list):
+        background.paste(triplet_icon_list[0], self.FIRST_ICON_POSITION) 
         background.paste(self.sidebar, self.SIDEBAR_POSITION)
-        background.paste(self.icon_read_tag, self.SECOND_ICON_POSITION)
-        background.paste(self.icon_scan_tag, self.THIRD_ICON_POSITION)
+        background.paste(triplet_icon_list[1], self.SECOND_ICON_POSITION)
+        background.paste(triplet_icon_list[2], self.THIRD_ICON_POSITION)
+
+        text = triplet_name_list[0]
+        draw.text(self.TEXT_1_POSITION, text, font=self.normal_font, fill=1)
+
+        text = triplet_name_list[1]
+        draw.text(self.TEXT_2_POSITION,text, font=self.bold_font, fill=1)
+
+        text = triplet_name_list[2]
+        draw.text(self.TEXT_3_POSITION, text, font=self.normal_font, fill=1)
 
 
     def lenght(self):
