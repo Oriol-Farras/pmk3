@@ -37,10 +37,10 @@ class Screen:
         self.__load_assets()
 
         # Create a new black image the size of the scree
-        background = Image.new("1", (self.WIDTH, self.HEIGHT), 0)  
-        draw = ImageDraw.Draw(background)
+        self.background = Image.new("1", (self.WIDTH, self.HEIGHT), 0)  
+        self.draw = ImageDraw.Draw(background)
 
-        self.__draw_screen(self.background, self.draw, self.names_menu.get_triplet_value(), self.icons_menu.get_triplet_value())
+        self.__update_screen()
 
         while True:
             self.oled.image(background)
