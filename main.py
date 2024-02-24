@@ -23,6 +23,7 @@ def main():
     screen = Screen()
     
     def up_say():
+        print(1)
         screen.next()
 
     up_button.when_pressed = up_say
