@@ -10,7 +10,7 @@ def main():
     down_button = Button(11)
 
     def up_say():
-        pass
+        screen.next()
 
     def ok_say():
         pass
