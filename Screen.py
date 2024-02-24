@@ -111,8 +111,8 @@ class Screen:
 
 
     def clean_screen(self):
-        self.oled.fill(0)
-        self.oled.show()
+        self.background = Image.new("1", (self.WIDTH, self.HEIGHT), 0)  
+        self.draw = ImageDraw.Draw(self.background)
 
     def __ok_say(self):
         pass
@@ -136,12 +136,12 @@ class Screen:
         return self.menu.lenght()
     
     def __update_screen(self):
+        self.clean_screen()
         self.__draw_screen(self.background, self.draw, self.names_menu.get_triplet_value(), self.icons_menu.get_triplet_value())
 
     def next(self):
         self.icons_menu.next()
         self.names_menu.next()
-        self.clean_screen()
 
         self.__update_screen()
 
