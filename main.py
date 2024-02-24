@@ -18,14 +18,16 @@ def main():
     def down_say():
         pass
 
-    up_button.when_pressed = up_say
-    ok_button.when_pressed = ok_say
-    down_button.when_pressed = down_say
+
 
     screen = Screen()
     
     def up_say():
         screen.next()
+
+    up_button.when_pressed = up_say
+    ok_button.when_pressed = ok_say
+    down_button.when_pressed = down_say
 
     pause()
 
