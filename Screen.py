@@ -114,23 +114,23 @@ class Screen:
         self.background = Image.new("1", (self.WIDTH, self.HEIGHT), 0)  
         self.draw = ImageDraw.Draw(self.background)
 
-    def __ok_say(self):
+    def __ok_button_pressed(self):
         pass
 
-    def __down_say(self):
-        pass
-
-    def __up_say(self):
+    def __down_button_pressed(self):
         self.next()
+
+    def __up_button_pressed(self):
+        self.previous()
 
     def __buttons(self):
         self.up_button = Button(17)
         self.ok_button = Button(19)
         self.down_button = Button(11)
 
-        self.up_button.when_pressed = self.__up_say
-        self.ok_button.when_pressed = self.__ok_say
-        self.down_button.when_pressed = self.__down_say
+        self.up_button.when_pressed = self.__up_button_pressed
+        self.ok_button.when_pressed = self.__ok_button_pressed
+        self.down_button.when_pressed = self.__down_button_pressed
 
     def lenght(self):
         return self.menu.lenght()
