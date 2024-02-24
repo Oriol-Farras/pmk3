@@ -39,24 +39,8 @@ class Screen:
         # Create a new black image the size of the scree
         background = Image.new("1", (self.WIDTH, self.HEIGHT), 0)  
         draw = ImageDraw.Draw(background)
-        """
-        # Put the icons in their position
-        background.paste(self.icon_auto_copy, self.FIRST_ICON_POSITION) 
-        background.paste(self.sidebar, self.SIDEBAR_POSITION)
-        background.paste(self.icon_read_tag, self.SECOND_ICON_POSITION)
-        background.paste(self.icon_scan_tag, self.THIRD_ICON_POSITION)
-        """
-        """
-        text = "Auto Copy"
-        draw.text(self.TEXT_1_POSITION, text, font=self.normal_font, fill=1)
 
-        text = "Scan Tag"
-        draw.text(self.TEXT_2_POSITION,text, font=self.bold_font, fill=1)
-
-        text = "Read Tag"
-        draw.text(self.TEXT_3_POSITION, text, font=self.normal_font, fill=1)
-        """
-        self.__draw_screen(background, draw, self.names_menu.get_triplet_value(), self.icons_menu.get_triplet_value())
+        self.__update_screen()
 
         while True:
             self.oled.image(background)
@@ -127,8 +111,15 @@ class Screen:
 
     def lenght(self):
         return self.menu.lenght()
+    
+    def __update_screen(self):
+        self.__draw_screen(self.background, self.draw, self.names_menu.get_triplet_value(), self.icons_menu.get_triplet_value())
 
     def next(self):
-        pass
+        self.icons_menu.next()
+        self.names_menu.next()
+
+        self.__update_screen()
+
     def previous(self):
         pass
