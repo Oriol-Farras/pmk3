@@ -74,8 +74,8 @@ class Screen:
 
         self.sidebar = Image.open("pbm_assets/item-selected-backgraund.pbm").convert("1")
 
-        self.normal_font = ImageFont.truetype("fonts/pixelOperator.ttf", 16)
-        self.bold_font = ImageFont.truetype("fonts/pixelOperator-Bold.ttf",16)
+        self.normal_font = ImageFont.truetype("fonts/PixelOperator.ttf", 16)
+        self.bold_font = ImageFont.truetype("fonts/PixelOperator-Bold.ttf",16)
 
     def lenght(self):
         return self.menu.lenght()
