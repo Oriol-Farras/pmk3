@@ -32,7 +32,7 @@ class Screen:
         self.oled = adafruit_ssd1306.SSD1306_I2C(self.WIDTH, self.HEIGHT, self.i2c, addr=0x3C)
 
         # Clean screen
-        self.clean_screen()
+        self.__clean_screen()
 
         self.__load_assets()
         self.__buttons()
@@ -110,7 +110,7 @@ class Screen:
         draw.text(self.TEXT_3_POSITION, text, font=self.normal_font, fill=1)
 
 
-    def clean_screen(self):
+    def __clean_screen(self):
         self.background = Image.new("1", (self.WIDTH, self.HEIGHT), 0)  
         self.draw = ImageDraw.Draw(self.background)
 
@@ -136,7 +136,7 @@ class Screen:
         return self.menu.lenght()
     
     def __update_screen(self):
-        self.clean_screen()
+        self.__clean_screen()
         self.__draw_screen(self.background, self.draw, self.names_menu.get_triplet_value(), self.icons_menu.get_triplet_value())
 
     def next(self):
@@ -146,4 +146,7 @@ class Screen:
         self.__update_screen()
 
     def previous(self):
-        pass
+        self.icons_menu.previous()
+        self.names_menu.previous()
+
+        self.__update_screen()
