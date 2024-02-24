@@ -63,24 +63,41 @@ class Screen:
     # Load the diferent assets for the project
     def __load_assets(self):
         self.icons_list = []
+        # Auto Copy
         self.icon_auto_copy = Image.open("pbm_assets/icon-auto-copy.pbm").convert("1")
         self.icons_list.append(self.icon_auto_copy)
+
+        # Read Tag
         self.icon_read_tag = Image.open("pbm_assets/icon-read-tag.pbm").convert("1")
         self.icons_list.append(self.icon_read_tag)
+
+        # Scan Tag
         self.icon_scan_tag = Image.open("pbm_assets/icon-scan-tag.pbm").convert("1")
         self.icons_list.append(self.icon_scan_tag)
-        self.icon_gear_tag = Image.open("pbm_assets/icon-gear.pbm").convert("1")
-        self.icons_list.append(self.icon_gear_tag)
-        self.icon_glasses_tag = Image.open("pbm_assets/icon-glasses.pbm").convert("1")
-        self.icons_list.append(self.icon_glasses_tag)
-        self.icon_info_tag = Image.open("pbm_assets/icon-info.pbm").convert("1")
-        self.icons_list.append(self.icon_info_tag)
+
+        # Edit Tag
         self.icon_pencil_tag = Image.open("pbm_assets/icon-pencil.pbm").convert("1")
         self.icons_list.append(self.icon_pencil_tag)
+
+        # View Tag
+        self.icon_glasses_tag = Image.open("pbm_assets/icon-glasses.pbm").convert("1")
+        self.icons_list.append(self.icon_glasses_tag)
+
+        # Scripts
         self.icon_script_tag = Image.open("pbm_assets/icon-script.pbm").convert("1")
         self.icons_list.append(self.icon_script_tag)
+
+        # Acces Point
         self.icon_waves_tag = Image.open("pbm_assets/icon-waves.pbm").convert("1")
         self.icons_list.append(self.icon_waves_tag)
+
+        # Settings
+        self.icon_gear_tag = Image.open("pbm_assets/icon-gear.pbm").convert("1")
+        self.icons_list.append(self.icon_gear_tag)
+
+        # Information
+        self.icon_info_tag = Image.open("pbm_assets/icon-info.pbm").convert("1")
+        self.icons_list.append(self.icon_info_tag)
 
         self.icons_menu = Menu(self.icons_list)
 
