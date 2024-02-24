@@ -113,7 +113,6 @@ class Screen:
     def clean_screen(self):
         self.background = Image.new("1", (self.WIDTH, self.HEIGHT), 0)  
         self.draw = ImageDraw.Draw(self.background)
-        self.background.paste(self.sidebar, self.SIDEBAR_POSITION)
 
     def __ok_say(self):
         pass
