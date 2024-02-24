@@ -4,6 +4,7 @@ import time
 import board
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_ssd1306
+from gpiozero import Button
 
 class Screen:
     def __init__(self):
@@ -108,6 +109,25 @@ class Screen:
         text = triplet_name_list[2]
         draw.text(self.TEXT_3_POSITION, text, font=self.normal_font, fill=1)
 
+
+    def __ok_say(self):
+        pass
+
+    def __down_say(self):
+        pass
+
+    def __up_say(self):
+        print(1)
+        self.screen.next()
+
+    def __buttons(self):
+        self.up_button = Button(17)
+        self.ok_button = Button(19)
+        self.down_button = Button(11)
+
+        self.up_button.when_pressed = self.__up_say
+        self.ok_button.when_pressed = self.__ok_say
+        self.down_button.when_pressed = self.__down_say
 
     def lenght(self):
         return self.menu.lenght()
