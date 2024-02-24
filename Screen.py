@@ -7,7 +7,7 @@ import adafruit_ssd1306
 
 class Screen:
     def __init__(self):
-        self.menu = Menu(menu_list)
+        self.names_menu = Menu(menu_list)
 
         # Screen size
         self.WIDTH = 128
@@ -62,20 +62,39 @@ class Screen:
         
     # Load the diferent assets for the project
     def __load_assets(self):
+        self.icons_list = []
         self.icon_auto_copy = Image.open("pbm_assets/icon-auto-copy.pbm").convert("1")
+        self.icons_list.append(self.icon_auto_copy)
         self.icon_read_tag = Image.open("pbm_assets/icon-read-tag.pbm").convert("1")
+        self.icons_list.append(self.icon_read_tag)
         self.icon_scan_tag = Image.open("pbm_assets/icon-scan-tag.pbm").convert("1")
+        self.icons_list.append(self.icon_scan_tag)
         self.icon_gear_tag = Image.open("pbm_assets/icon-gear.pbm").convert("1")
+        self.icons_list.append(self.icon_gear_tag)
         self.icon_glasses_tag = Image.open("pbm_assets/icon-glasses.pbm").convert("1")
+        self.icons_list.append(self.icon_glasses_tag)
         self.icon_info_tag = Image.open("pbm_assets/icon-info.pbm").convert("1")
+        self.icons_list.append(self.icon_info_tag)
         self.icon_pencil_tag = Image.open("pbm_assets/icon-pencil.pbm").convert("1")
+        self.icons_list.append(self.icon_pencil_tag)
         self.icon_script_tag = Image.open("pbm_assets/icon-script.pbm").convert("1")
+        self.icons_list.append(self.icon_script_tag)
         self.icon_waves_tag = Image.open("pbm_assets/icon-waves.pbm").convert("1")
+        self.icons_list.append(self.icon_waves_tag)
+
+        self.icons_menu = Menu(self.icons_list)
 
         self.sidebar = Image.open("pbm_assets/item-selected-backgraund.pbm").convert("1")
 
         self.normal_font = ImageFont.truetype("fonts/PixelOperator.ttf", 16)
         self.bold_font = ImageFont.truetype("fonts/PixelOperator-Bold.ttf",16)
+
+    def __draw_screen(self,background, triplet_list):
+        background.paste(self.icon_auto_copy, self.FIRST_ICON_POSITION) 
+        background.paste(self.sidebar, self.SIDEBAR_POSITION)
+        background.paste(self.icon_read_tag, self.SECOND_ICON_POSITION)
+        background.paste(self.icon_scan_tag, self.THIRD_ICON_POSITION)
+
 
     def lenght(self):
         return self.menu.lenght()
