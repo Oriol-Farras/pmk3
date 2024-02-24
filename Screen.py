@@ -119,7 +119,7 @@ class Screen:
 
     def __up_say(self):
         print(1)
-        self.screen.next()
+        self.next()
 
     def __buttons(self):
         self.up_button = Button(17)
