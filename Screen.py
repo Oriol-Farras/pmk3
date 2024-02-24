@@ -1,11 +1,12 @@
 from Menu import Menu
+from config import menu_list
 import time
 import board
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_ssd1306
 
 class Screen:
-    def __init__(self, menu_list):
+    def __init__(self):
         self.menu = Menu(menu_list)
 
         # Screen size
@@ -44,6 +45,20 @@ class Screen:
         background.paste(self.sidebar, self.SIDEBAR_POSITION)
         background.paste(self.icon_read_tag, self.SECOND_ICON_POSITION)
         background.paste(self.icon_scan_tag, self.THIRD_ICON_POSITION)
+
+        text = "Auto Copy"
+        draw.text(self.TEXT_1_POSITION, text, font=self.normal_font, fill=1)
+
+        text = "Scan Tag"
+        draw.text(self.TEXT_2_POSITION,text, font=self.bold_font, fill=1)
+
+        text = "Read Tag"
+        draw.text(self.THIRD_ICON_POSITION, text, font=self.normal_font, fill=1)
+
+        while True:
+            self.oled.image(background)
+            self.oled.show()
+            time.sleep(1.0)
         
     # Load the diferent assets for the project
     def __load_assets(self):
