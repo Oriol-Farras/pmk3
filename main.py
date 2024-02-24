@@ -2,9 +2,9 @@ from Screen import Screen
 from gpiozero import Button
 from signal import pause
 
-screen = None
+
 def main():
-    global screen
+
     # Pins dels bottons
     up_button = Button(17)
     ok_button = Button(19)
@@ -23,12 +23,12 @@ def main():
     down_button.when_pressed = down_say
 
     screen = Screen()
+    
+    def up_say():
+        screen.next()
 
     pause()
-    
-def up_say():
-    global screen
-    screen.next()       
+
 
 if __name__ == '__main__':
     main()
