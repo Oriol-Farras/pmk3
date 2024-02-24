@@ -36,6 +36,7 @@ class Screen:
         self.oled.show()
 
         self.__load_assets()
+        self.__buttons()
 
         # Create a new black image the size of the scree
         self.background = Image.new("1", (self.WIDTH, self.HEIGHT), 0)  
