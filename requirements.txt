@@ -1,0 +1,5 @@
+Adafruit-Blinka
+adafruit-circuitpython-ssd1306
+Pillow
+gpiozero
+RPi.GPIO
