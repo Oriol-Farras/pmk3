@@ -7,7 +7,6 @@ import adafruit_ssd1306
 from gpiozero import Button
 
 class Screen:
-class Screen:
     def __init__(self):
         self.names_menu = Menu(menu_list)
 
