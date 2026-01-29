@@ -7,6 +7,7 @@ import adafruit_ssd1306
 from gpiozero import Button
 
 class Screen:
+class Screen:
     def __init__(self):
         self.names_menu = Menu(menu_list)
 
@@ -31,22 +32,22 @@ class Screen:
         self.i2c = board.I2C()
         self.oled = adafruit_ssd1306.SSD1306_I2C(self.WIDTH, self.HEIGHT, self.i2c, addr=0x3C)
 
-        # Clean screen
-        self.__clean_screen()
-
         self.__load_assets()
         self.__buttons()
 
-        # Create a new black image the size of the scree
-        self.background = Image.new("1", (self.WIDTH, self.HEIGHT), 0)  
-        self.draw = ImageDraw.Draw(self.background)
-
+        # Clean screen
+        self.__clean_screen()
+        
+        # Initial draw
         self.__update_screen()
 
-        while True:
-            self.oled.image(self.background)
-            self.oled.show()
-            time.sleep(1.0)
+    def run(self):
+        """Keep the script running"""
+        try:
+            while True:
+                time.sleep(0.1)
+        except KeyboardInterrupt:
+            pass
         
     # Load the diferent assets for the project
     def __load_assets(self):
@@ -144,6 +145,9 @@ class Screen:
     def __update_screen(self):
         self.__clean_screen()
         self.__draw_screen(self.background, self.draw, self.names_menu.get_triplet_value(), self.icons_menu.get_triplet_value())
+        # Refresh OLED immediately
+        self.oled.image(self.background)
+        self.oled.show()
 
     # Go to the next elements of the screen and update them
     def next(self):

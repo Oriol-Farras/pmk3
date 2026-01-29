@@ -5,7 +5,7 @@ menu_list = [
     "Edit Tag",
     "View Tag",
     "Scripts",
-    "Aces Point",
+    "Access Point",
     "Settings",
     "Information"
 ]
